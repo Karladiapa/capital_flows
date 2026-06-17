@@ -270,15 +270,13 @@
       #sidebar.collapsed .sb-head .subtitle,
       #sidebar.collapsed .sb-head h2 { display: none; }
       #sidebar.collapsed #sbToggle { right: 8px; top: 8px; }
-      .credit-box {
-        max-width: 300px;
-        background: rgba(13,17,23,0.82); color: #c9d1d9;
-        padding: 8px 11px; border: 1px solid #30363d; border-radius: 8px;
-        font-size: 10.5px; line-height: 1.45;
-        backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+      .sb-credit {
+        margin-top: 18px; padding-top: 12px;
+        border-top: 1px solid #21262d;
+        font-size: 10px; line-height: 1.5; color: #8b949e;
       }
-      .credit-box b { color: #fff; }
-      .credit-box i { color: #9ecbff; }
+      .sb-credit b { color: #c9d1d9; }
+      .sb-credit i { color: #79c0ff; font-style: italic; }
     </style>
   </head>
   <body>
@@ -311,6 +309,11 @@
           <div id="modelList"></div>
           <div class="sec-label">Actor Type</div>
           <div id="actorList"></div>
+          <div class="sb-credit">
+            This map is part of the doctoral research project of <b>Karla D&iacute;az Parra</b> &mdash;
+            <i>Unraveling the crime of deforestation in the Cagu&aacute;n region: cattle, labor</i> &mdash;
+            University of Bonn.
+          </div>
         </div>
       </div>
     </div>
@@ -1807,22 +1810,6 @@
             setTimeout(function () { map.invalidateSize(); }, 220);
         });
       })();
-      // Caja de creditos (esquina inferior derecha)
-      (function () {
-        if (typeof map === "undefined") return;
-        var credit = L.control({ position: "bottomright" });
-        credit.onAdd = function () {
-          var d = L.DomUtil.create("div", "credit-box");
-          d.innerHTML =
-            "This map is part of the doctoral research project of <b>Karla Yubranny D\u00edaz Parra</b> \u2014 " +
-            "<i>Unraveling the crime of deforestation in the Cagu\u00e1n region: cattle, labor</i> \u2014 " +
-            "University of Bonn.<br>";
-          L.DomEvent.disableClickPropagation(d);
-          return d;
-        };
-        credit.addTo(map);
-      })();
     </script>
   </body>
 </html>
-
