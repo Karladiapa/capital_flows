@@ -309,8 +309,11 @@
           <div id="modelList"></div>
           <div class="sb-credit">
             This map is part of the doctoral research project of <b>Karla D&iacute;az Parra</b> &mdash;
-            <i>Unraveling the crime of deforestation in the Cagu&aacute;n region: cattle, labor</i> &mdash;
+            <i>Unraveling the crime of deforestation in the Northwestern Colombian Amazon: cattle, labor and injustice</i> &mdash;
             University of Bonn.
+          </div>
+          <div class="sb-credit">
+            This tool was developed with guidance from <b>Balakrishna Prabhu</b>, junior researcher at ZEF.
           </div>
         </div>
       </div>
@@ -329,13 +332,8 @@
       <hr class="leg-sep" />
       <div class="leg-row">
         <div class="leg-circ" style="background: #f1c40f"></div>
-        Investors (origin)
+        Origen
       </div>
-      <div class="leg-row">
-        <div class="leg-circ" style="background: #ff6b6b"></div>
-        Large landowners (origin)
-      </div>
-      <hr class="leg-sep" />
       <div class="leg-row">
         <div
           class="leg-circ"
@@ -1455,14 +1453,7 @@
       Object.entries(origin_counts).forEach(([origin, count]) => {
         const rec = records.find((r) => r.origen_label === origin);
         if (!rec || !rec.origin_coord) return;
-        const ac = {};
-        records
-          .filter((r) => r.origen_label === origin)
-          .forEach((r) => {
-            if (r.modelo_negocio) ac[r.modelo_negocio] = (ac[r.modelo_negocio] || 0) + 1;
-          });
-        const dom = Object.keys(ac).sort((a, b) => ac[b] - ac[a])[0] || "";
-        const fill = model_colors[dom] || "#aaa";
+        const fill = "#f1c40f"; // origen: color fijo, no depende del modelo
         const circle = L.circleMarker(rec.origin_coord, {
           radius: 7 + (count / maxCnt) * 20,
           fillColor: fill,
